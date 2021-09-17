@@ -100,21 +100,25 @@ public class Form1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_reshitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_reshitActionPerformed
-        float x = Float.parseFloat(jTextField_x.getText());
-        float y;
-        float a = Float.parseFloat(jTextField_a.getText());
-        float b = Float.parseFloat(jTextField_b.getText());
-        
-        if (x <= 4 && x != 0){
-            y = (a * a) / (x * x) + (6 * x);
-            jLabel_otvet.setText(String.valueOf(y));
-        }
-        if (x == 0){
-            jLabel_otvet.setText("Обнаружен ноль в знаменателе!");
-        }
-        if (x > 4){
-            y = b * b * ((4 + x) * (4 + x));
-            jLabel_otvet.setText(String.valueOf(y));
+        try {
+            float x = Float.parseFloat(jTextField_x.getText());
+            float y;
+            float a = Float.parseFloat(jTextField_a.getText());
+            float b = Float.parseFloat(jTextField_b.getText());
+
+            if (x <= 4 && x != 0) {
+                y = (a * a) / (x * x) + (6 * x);
+                jLabel_otvet.setText(String.valueOf(y));
+            }
+            if (x == 0) {
+                jLabel_otvet.setText("Обнаружен ноль в знаменателе!");
+            }
+            if (x > 4) {
+                y = b * b * ((4 + x) * (4 + x));
+                jLabel_otvet.setText(String.valueOf(y));
+            }
+        } catch (Exception e) {
+            jLabel_otvet.setText("???");
         }
     }//GEN-LAST:event_jButton_reshitActionPerformed
 

@@ -105,7 +105,7 @@ public class Form1 extends javax.swing.JFrame {
             float y;
             float a = Float.parseFloat(jTextField_a.getText());
             float b = Float.parseFloat(jTextField_b.getText());
-            if (x <= -1000000 && a <= -1000000 && b <= -1000000 && x >= 1000000 && a >= 1000000 && b >= 1000000) {
+            if (x >= -1000000 && a >= -1000000 && b >= -1000000 && x <= 1000000 && a <= 1000000 && b <= 1000000) {
                 if (x <= 4 && x != 0) {
                     y = (a * a) / (x * x) + (6 * x);
                     jLabel_otvet.setText(String.valueOf(y));

@@ -105,17 +105,20 @@ public class Form1 extends javax.swing.JFrame {
             float y;
             float a = Float.parseFloat(jTextField_a.getText());
             float b = Float.parseFloat(jTextField_b.getText());
-
-            if (x <= 4 && x != 0) {
-                y = (a * a) / (x * x) + (6 * x);
-                jLabel_otvet.setText(String.valueOf(y));
-            }
-            if (x == 0) {
-                jLabel_otvet.setText("Обнаружен ноль в знаменателе!");
-            }
-            if (x > 4) {
-                y = b * b * ((4 + x) * (4 + x));
-                jLabel_otvet.setText(String.valueOf(y));
+            if (x <= -1000000 && a <= -1000000 && b <= -1000000 && x >= 1000000 && a >= 1000000 && b >= 1000000) {
+                if (x <= 4 && x != 0) {
+                    y = (a * a) / (x * x) + (6 * x);
+                    jLabel_otvet.setText(String.valueOf(y));
+                }
+                if (x == 0) {
+                    jLabel_otvet.setText("Обнаружен ноль в знаменателе!");
+                }
+                if (x > 4) {
+                    y = b * b * ((4 + x) * (4 + x));
+                    jLabel_otvet.setText(String.valueOf(y));
+                }
+            } else {
+                jLabel_otvet.setText("Выход за пределы числового лимита в 1 млн!");
             }
         } catch (Exception e) {
             jLabel_otvet.setText("???");

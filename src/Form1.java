@@ -1,3 +1,6 @@
+
+import java.text.DecimalFormat;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -100,12 +103,32 @@ public class Form1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_reshitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_reshitActionPerformed
+        float x = 0, y = 0, a = 0, b = 0;
         try {
-            float x = Float.parseFloat(jTextField_x.getText());
-            float y;
-            float a = Float.parseFloat(jTextField_a.getText());
-            float b = Float.parseFloat(jTextField_b.getText());
-            if (x >= -1000000 && a >= -1000000 && b >= -1000000 && x <= 1000000 && a <= 1000000 && b <= 1000000) {
+            try {
+                x = Float.parseFloat(jTextField_x.getText());
+            } catch (NumberFormatException e) {
+                jTextField_x.setText("");
+                jTextField_x.requestFocus(); 
+                return;
+            }
+
+            try {
+                a = Float.parseFloat(jTextField_a.getText());
+            } catch (NumberFormatException e) {
+                jTextField_a.setText("");
+                jTextField_a.requestFocus(); 
+                return;
+            }
+            try {
+                b = Float.parseFloat(jTextField_b.getText());
+            } catch (NumberFormatException e) {
+                jTextField_b.setText("");
+                jTextField_b.requestFocus(); 
+                return;
+            }
+            try {
+                //if (x >= -1000000 && a >= -1000000 && b >= -1000000 && x <= 1000000 && a <= 1000000 && b <= 1000000) {
                 if (x <= 4 && x != 0) {
                     y = (a * a) / (x * x) + (6 * x);
                     jLabel_otvet.setText(String.valueOf(y));
@@ -115,13 +138,17 @@ public class Form1 extends javax.swing.JFrame {
                 }
                 if (x > 4) {
                     y = b * b * ((4 + x) * (4 + x));
-                    jLabel_otvet.setText(String.valueOf(y));
+                    jLabel_otvet.setText(String.valueOf(new DecimalFormat("#0.00").format(y))); 
                 }
-            } else {
-                jLabel_otvet.setText("Выход за пределы числового лимита в 1 млн!");
+                if (Float.isInfinite(y) || Float.isNaN(y)) {
+                    throw new Exception("error");
+                }
+                //} else {
+            } catch (Exception e) {
+                jLabel_otvet.setText("Ошибка при расчете значения!");
             }
         } catch (Exception e) {
-            jLabel_otvet.setText("???");
+            jLabel_otvet.setText("Введите нормальные значения!");
         }
     }//GEN-LAST:event_jButton_reshitActionPerformed
 
@@ -153,13 +180,17 @@ public class Form1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Form1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Form1.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Form1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Form1.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Form1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Form1.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Form1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Form1.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
